@@ -1,0 +1,11 @@
+<h1><a href = "<%= "#{@article_info["url"]}" %>"><%="#{@article_info["title"]}"%></a><h2>
+
+<form method="post" action="/addcomment">
+  <textarea name = "comment" id = "comment" rows="10" cols="120" class = "input_label"></textarea>
+  <input type="hidden" name = "article_id" value = "<%= "#{@article_info["article_id"]}" %>"/>
+  <input type="hidden" name = "time" value = "<%= Time.new.strftime("%m/%d/%Y") %>"/>
+  <input type="submit" value="Submit" />
+</form>
+
+
+

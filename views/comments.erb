@@ -1,0 +1,11 @@
+<ol>
+  <% @comments.each do |comment|%>
+    <li class="small_font">
+      <a class = "comment_link" href = "<%= "#{comment["article"][0]["url"]}"%>"><%= "#{comment["article"][0]["title"]}"%></a>&nbsp;&nbsp;
+      <%= "Response to: <em> #{comment["response_to"][0,40]} </em>" if comment["response_to"] != nil %><br>
+      <span class = "date"><%= "[#{comment["article"][0]["time"]}]"%></span><span><%= "#{comment["comment"]}" %></span><br><br>
+    </li>
+
+  <% end %>
+</ol>
+

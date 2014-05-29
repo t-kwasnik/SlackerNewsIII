@@ -1,0 +1,13 @@
+<h1><a href = "<%= "#{@comment_info["article"][0]["url"]}" %>"><%= "#{@comment_info["article"][0]["title"]}" %></a></h2>
+<span><%= "#{@comment_info["comment"]}" %></span><br><br>
+
+<form method="post" action="/addcomment">
+  <textarea name = "comment" id = "comment" rows="10" cols="120" class = "input_label"></textarea>
+  <input type="hidden" name = "article_id" value = "<%= "#{@comment_info["article_id"]}" %>"/>
+  <input type="hidden" name = "parent_comment" value = "<%= "#{@comment_info["parent_comment"]}" %>"/>
+  <input type="hidden" name = "time" value = "<%= Time.new.strftime("%m/%d/%Y") %>"/>
+  <input type="submit" value="Submit" />
+</form>
+
+
+

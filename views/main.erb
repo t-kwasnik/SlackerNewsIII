@@ -1,0 +1,26 @@
+<ol>
+  <% @articles.each do |article|%>
+    <li><a href = "<%= article["url"] %>"><b><%= article["title"] %></b></a>
+    <span class = "medium font">(<%= "#{article["url"]})"%></span><span class = "date"><%= "[#{article["time"]}]"%></span>
+    <br><span class = "small_font"><%="#{URI.decode(article["description"])}" %></span>
+        <ul>
+         <li><a class = "small_font" href= "/addcomment/<%= article["article_id"] %>">Add a comment</a></li>
+         <div class = "comments_box">
+         <% article["comments"].each do |comment|%>
+           <li>><span><%= "#{comment["comment"]}"%></span><span class = "date"><%="[#{comment["time"]}]"%></span>
+              <a class = "small_font" href= "/addresponse/<%= "#{comment["article_id"]}/#{comment["comment_id"]}"%>">Respond</a>
+              <% if comment.has_key?("subcomments") %>
+              <ul>
+
+                <% comment["subcomments"].each do |subcomment| %>
+                  <li>>><span><%= "#{subcomment["comment"]}"%></span><span class = "date"><%="[#{subcomment["time"]}]"%></span>
+                <% end %>
+
+              </ul>
+              <% end %>
+           </li>
+         <% end %>
+        </div>
+        </ul>
+  <% end %>
+</ol>

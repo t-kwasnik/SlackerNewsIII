@@ -1,0 +1,25 @@
+    <% if @missing_info != []%>
+    <h1 class="error">Before submitting...</h1>
+    <ul>
+    <% @missing_info.each do |error|%>
+      <li class= "error"><h3><%=error%></h3></li>
+    <% end %>
+    </ul>
+  <% end %>
+
+<form method="post" action"/submit">
+  <label for="title">Title</label>
+  <input type = "text" name = "title" id = "title" size = "40" value = "<%= "#{@populated_info[:title]}" if @populated_info.has_key?(:title) %>"/>
+
+  <br>
+  <label for="url">URL</label>
+  <input type = "url" name = "url" id = "url" size = "120" value = "<%= "#{@populated_info[:url]}" if @populated_info.has_key?(:url) %>"/><br>
+
+  <textarea name = "descriptor" id = "descriptor" rows="10" cols="120" class = "input_label"><%= "#{@populated_info[:descriptor]}" if @populated_info.has_key?(:descriptor) %></textarea>
+  <br>
+  <input type="hidden" name = "calander_time" value = "<%= Time.new.strftime("%m-%d-%Y")%>"/>
+  <input type="hidden" name = "clock_time" value = "<%= Time.new.strftime("%H:%M")%>"/>
+
+
+  <input type="submit" value="Submit" />
+</form>
